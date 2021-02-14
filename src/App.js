@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   Switch,
   Route,
@@ -7,12 +7,11 @@ import './index.scss'
 import About from './pages/About'
 import Home from './pages/Home'
 import Services from './pages/Services'
+import Error from './pages/Error'
 import Nav from './components/Nav'
 
 
 function App() {
-
-
   return (
     <>
       <Nav />
@@ -20,6 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/services" component={Services} />
+        <Route component={Error} />
       </Switch>
     </>
   )

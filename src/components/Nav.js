@@ -16,31 +16,32 @@ export default class Nav extends Component {
     render() {
         return (
             <nav>
-                <div className='nav-logo'>
-                    <Link to='/' >
-                        <img src={logo} alt='logo' />
-                    </Link>
-                    <button className='nav-btn' onClick={this.handleToggle}><FaAlignRight /></button>
+                <div className='nav-center'>
+                    <div className='nav-header'>
+                        <Link to='/' >
+                            <img src={logo} alt='logo' />
+                        </Link>
+                        <button className='nav-btn' onClick={this.handleToggle}><FaAlignRight className='nav-icon' /></button>
+                    </div>
+                    <ul className={this.state.navOpen ? 'nav-links show-nav' : 'nav-links'}>
+                        <li>
+                            <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to='/services' style={{ textDecoration: 'none' }}>Services</Link>
+                        </li>
+                        <li>
+                            <Link to='/about' style={{ textDecoration: 'none' }}>About us</Link>
+                        </li>
+                        <li>
+                            <Link to='/' style={{ textDecoration: 'none' }}><BiSearchAlt /></Link>
+                        </li>
+                        <li>
+                            <Link to='/' style={{ textDecoration: 'none' }}><BiUser /></Link>
+                        </li>
+
+                    </ul>
                 </div>
-                <ul className={this.state.navOpen ? 'nav-links show-nav' : 'nav-links'}>
-                    <li>
-                        <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/services' style={{ textDecoration: 'none' }}>Services</Link>
-                    </li>
-                    <li>
-                        <Link to='/about' style={{ textDecoration: 'none' }}>About us</Link>
-                    </li>
-                    <li>
-                        <Link to='/' style={{ textDecoration: 'none' }}><BiSearchAlt /></Link>
-                    </li>
-                    <li>
-                        <Link to='/' style={{ textDecoration: 'none' }}><BiUser /></Link>
-                    </li>
-
-                </ul>
-
             </nav>
         )
     }

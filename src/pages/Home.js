@@ -7,6 +7,7 @@ import Tours from '../components/Tours'
 import Areas from '../components/Areas'
 import Activities from '../components/Activities'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const url = 'https://course-api.com/react-tours-project'
 
@@ -35,7 +36,7 @@ const Home = () => {
     return (
         <>
             <Hero>
-                <Title title='Sustainability startergy 2030' subtitle='Sustainability at IND' />
+                <Header title="Uncover europe's greatest regions" button='Explore' />
             </Hero>
             <Tours tours={tours} />
             <News />

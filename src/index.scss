@@ -7,70 +7,166 @@
 
 // Variables
 :root{
-  --primary-clr: hsl(135, 7%, 64%);
+  --primary-clr: hsl(135, 7%, 90%);
   --secondary-clr: hsl(355, 67%, 26%);
   --dark-blue: hsl(240, 100%, 7%);
   --fulvous: hsl(33, 84%, 48%);
+  --grey-text: hsl(135, 7%, 20%);
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-
-nav{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--primary-clr);
-}
-
-nav ul{
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  margin: 1rem;
-  color: black;
-}
-
-nav ul li{
-  margin: 0 1rem;
-}
-
-nav ul li{
-  list-style: none;
-  text-decoration: none;
-
-
-}
-
-nav img{
-  width: auto;
-  height: 80px;
-}
-
-h1{
+//Globals
+body {
   color: var(--dark-blue);
-  font-size: 3rem;
-
+  background: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.4;
 }
+
+//Nav
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.75rem 2rem;
+    background: var(--primary-clr);
+    z-index: 1;
+
+    .nav-header {
+      display: flex;
+      justify-content:space-between;
+      img{
+        height: 70px;
+        width: 70px;
+      }
+      .nav-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        .nav-icon {
+          font-size: 1.5rem;
+          color: var(--fulvous);
+        }
+      }
+    }
+
+    .nav-links {
+      height: 0;
+      // overflow: hidden;
+      transition: var(--mainTransition);
+      list-style-type: none;
+    }
+    .nav-links a {
+      display: block;
+      text-decoration: none;
+      padding: 1rem 0;
+      color: var(--dark-blue);
+      transition: var(--mainTransition);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: var(--mainSpacing);
+    }
+    .nav-links a:hover {
+      color: var(--secondary-clr);
+    }
+    
+    .show-nav {
+      height: 100px;
+    }
+  }
+  
+
+  @media screen and (min-width: 768px) {
+    .nav-btn {
+      display: none;
+    }
+    .nav-center {
+      max-width: 1170px;
+      margin: 0 auto;
+      display: flex;
+    }
+    .nav-links {
+      height: 100px;
+      display: flex;
+      margin-left: 4rem;
+    }
+    .nav-links a {
+      margin: 0 1rem;
+      padding: 0.5rem 0;
+    }
+  }
 
 
 //Banner
 .banner {
   margin-top: 20rem;
   margin-left: 2rem;
-  display: block;
   width: 90vw;
-  height: 35vh;
   font-size: 1rem;
   background: white;
   padding: 3rem;
+  line-height: 1.5;
+  box-shadow: var(--darkShadow);
+
   div{
     display: inline-block;
-    width: 5vw;
-    border: var(--dark-blue) 6px solid;
+    width: 6vw;
+    border: var(--fulvous) 6px solid;
+  }
+  h4{
+    margin-top: 1rem;
     color: var(--secondary-clr);
+    text-transform: capitalize;
+
   }
   h1{
     color: var(--dark-blue);
+    margin: 1rem 0;
+  }
+
+  button{
+    margin: 2rem;
+    padding: 1rem 0.9rem;
+    transition: var(--mainTransition);
+    text-transform: uppercase;
+    background: var(--secondary-clr);
+    color: var(--primary-clr);
+    border-radius: 1rem;
+    cursor: pointer;
+  
+  &:hover {
+    background: var(--primary-clr);
+    color: var(--secondary-clr);
+  }
+  }
+}
+
+
+//Header
+.header{
+  text-align: center;
+  margin: 4rem;
+  color: var(--primary-clr);
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+
+  button{
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: var(--secondary-clr);
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: var(--primary-clr);
+    cursor: pointer;
 
   }
 }
@@ -78,29 +174,29 @@ h1{
 //Title
 .section-title {
   text-align: center;
-  margin: 2rem 0;
+  margin: 2rem;
+  color: var(--dark-blue);
+  text-transform: capitalize;
 
   h4 {
     font-size: 2rem;
     letter-spacing: var(--mainSpacing);
-    text-transform: capitalize;
     margin-bottom: 1rem;
   }
   div {
     width: 5rem;
     height: 5px;
     margin: 0 auto;
-    background: var(--primary-clr);
+    background: var(--secondary-clr);
   }
 }
 
-
-/* //Home */
+//Home 
 .bcg-img, .news-img, .activities-img{
   background: url('./images/bcg-img.jpg') center/ cover no-repeat;
   height: 60vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -128,49 +224,86 @@ h1{
       padding: 1rem;
     }
     button{
-      color: var(--primary-clr);
+      color: var(--secondary-clr);
       border: none;
       font-size: 1.1em;
       margin-left: 1em;
       background: none;
       outline-color: none;
+      cursor: pointer;
 
     }
     
   }
 }
 
+
 //News 
-.news{
-  .news-img{
+ .news-img{
     background-image: url('./images/news-img.jpg');
     min-height: 60vh;
-  }
-  
- 
-
-}
+ }
 
 //Areas
  .areas{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   padding: 4rem;
 }
 
 //Activities
 .activities{
   height: 70vh;
-
+  h1{
+    text-transform: capitalize;
+  }
   .activities-img{
     background-image: url('./images/activ-img.jpg') ;
     min-height: 60vh;
   }
 }
 
+//Services
+.services {
+  padding: 8rem 0;
+}
+.services {
+  background: white;
+  text-align: center;
+}
+.services-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
+  grid-row-gap: 3rem;
+  grid-column-gap: 2rem;
+}
+.service span {
+  display: inline-block;
+  color: var(--secondary-clr);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.services h6 {
+  letter-spacing: var(--mainSpacing);
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+.services p {
+  width: 80%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 992px) {
+  .services-center {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
 
+@media screen and (min-width: 1200px) {
+  .services p {
+    width: 100%;
+  }
+}
 
 //Footer
 .footer{
@@ -179,12 +312,12 @@ h1{
   justify-content: space-around;
   align-items: center;
   padding: 6rem 1rem;
-  background: var(--dark-blue);
-  color: white;
+  background: var(--primary-clr);
+  color: var(--dark-blue);
+
 
   ul li{
-    list-style: none;
+    list-style-type: none;
     padding: 1rem 0;
-    outline: none;
   }
 }
