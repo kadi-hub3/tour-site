@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import data from '../data'
+import { questions } from '../data'
 import Question from '../components/Question'
 import Title from '../components/Title'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
 
 const About = () => {
-    const [questions, setQuestions] = useState(data)
 
     return (
         <>

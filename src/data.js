@@ -1,4 +1,8 @@
-const questions = [
+import React from 'react'
+import { FaBehance, FaFacebook, FaLinkedin, FaTwitter, FaSearch, FaUser } from 'react-icons/fa'
+
+
+export const questions = [
     {
         id: 1,
         title: 'Do I have to apply for visa long before?',
@@ -30,4 +34,56 @@ const questions = [
             'Locavore franzen fashion axe live-edge neutra irony synth af tilde shabby chic man braid chillwave waistcoat copper mug messenger bag. Banjo snackwave blog, microdosing thundercats migas vaporware viral lo-fi seitan ',
     },
 ]
-export default questions
+
+
+export const links = [
+    {
+        id: 1,
+        url: '/',
+        text: 'Home',
+    },
+    {
+        id: 2,
+        url: '/about',
+        text: 'about',
+    },
+    {
+        id: 3,
+        url: '/services',
+        text: 'services',
+    },
+    {
+        id: 4,
+        url: '/contact',
+        text: <FaSearch />,
+    },
+    {
+        id: 5,
+        url: '/profile',
+        text: <FaUser />,
+    },
+]
+
+export const social = [
+    {
+        id: 1,
+        url: 'https://www.twitter.com',
+        icon: <FaFacebook />,
+    },
+    {
+        id: 2,
+        url: 'https://www.twitter.com',
+        icon: <FaTwitter />,
+    },
+    {
+        id: 3,
+        url: 'https://www.twitter.com',
+        icon: <FaLinkedin />,
+    },
+    {
+        id: 4,
+        url: 'https://www.twitter.com',
+        icon: <FaBehance />,
+    },
+]
+

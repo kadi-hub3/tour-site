@@ -1,48 +1,51 @@
-import React, { Component } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { BiUser, BiSearchAlt, BiGlobe } from 'react-icons/bi'
-import { FaAlignRight } from 'react-icons/fa'
+import { links, social } from '../data'
 import logo from '../images/logo.jpg'
 
-export default class Nav extends Component {
-    state = {
-        navOpen: false
-    }
+const Nav = () => {
+    const [show, setShow] = useState(false)
+    const linksContRef = useRef(null)
+    const linksRef = useRef(null)
 
-    handleToggle = () => {
-        this.setState({ navOpen: !this.state.navOpen })
-    }
+    useEffect(() => {
+        const linksHeight = linksRef.current.getBoundingClientRect().height
+        if (show) {
+            linksContRef.current.style.height = `${linksHeight}px`
+        } else {
+            linksContRef.current.style.height = '0'
 
-    render() {
-        return (
-            <nav>
-                <div className='nav-center'>
-                    <div className='nav-header'>
-                        <Link to='/' >
-                            <img src={logo} alt='logo' />
-                        </Link>
-                        <button className='nav-btn' onClick={this.handleToggle}><FaAlignRight className='nav-icon' /></button>
-                    </div>
-                    <ul className={this.state.navOpen ? 'nav-links show-nav' : 'nav-links'}>
-                        <li>
-                            <Link to='/' style={{ textDecoration: 'none' }}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to='/services' style={{ textDecoration: 'none' }}>Services</Link>
-                        </li>
-                        <li>
-                            <Link to='/about' style={{ textDecoration: 'none' }}>About us</Link>
-                        </li>
-                        <li>
-                            <Link to='/' style={{ textDecoration: 'none' }}><BiSearchAlt /></Link>
-                        </li>
-                        <li>
-                            <Link to='/' style={{ textDecoration: 'none' }}><BiUser /></Link>
-                        </li>
+        }
+    }, [show])
 
-                    </ul>
-                </div>
-            </nav>
-        )
-    }
+    return <nav>
+        <div className='nav-header'>
+            <img src={logo} alt={logo} />
+            <button className='nav-toggle' onClick={() => setShow(!show)}>
+                <FaBars />
+            </button>
+        </div>
+
+        <div className='links-container' ref={linksContRef}>
+            <ul className='links' ref={linksRef}>
+                {links.map(link => {
+                    const { id, url, text } = link
+                    return <li key={id}>
+                        <Link to={url}>{text}</Link>
+                    </li>
+                })}
+            </ul>
+        </div>
+        <ul className='social-icons'>
+            {social.map(link => {
+                const { id, url, icon } = link
+                return <li key={id}>
+                    <Link to={url}>{icon}</Link>
+                </li>
+            })}
+        </ul>
+    </nav>
 }
+
+export default Nav
